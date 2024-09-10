@@ -9,6 +9,12 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
+    - name: Install Homebrew
+      run: |
+        "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    - name: Install FreeGLUT Prerequisites 
+      run: |
+        brew install cmake libx11 libxi libxrandr libxxf86vm pkg-config mesa
     - name: Install SDL2
       run: |
         mkdir build
@@ -17,12 +23,6 @@ jobs:
         cmake sdl
         make
         sudo make install
-    - name: Install Homebrew
-      run: |
-        -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    - name: Install FreeGLUT Prerequisites 
-      run: |
-        brew install cmake libx11 libxi libxrandr libxxf86vm pkg-config mesa
     - name: Install FreeGLUT
       run: |
         cd .
