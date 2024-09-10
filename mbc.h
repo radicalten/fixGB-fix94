@@ -6,7 +6,7 @@
  */
 
 #ifndef _mbc_h_
-#define _mem_h_
+#define _mbc_h_
 
 enum {
 	MBC_TYPE_NONE = 0,
