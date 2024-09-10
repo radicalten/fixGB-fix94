@@ -9,6 +9,9 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
+    - name: OpenAL Soft
+      run: |
+        git clone https://github.com/radicalten/openal-soft-kcat.git
     - name: Set up Homebrew
       id: set-up-homebrew
       uses: Homebrew/actions/setup-homebrew@master
