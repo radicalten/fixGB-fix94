@@ -1,8 +1,8 @@
-name: OSX-SDL2-Brew-GLUT
+name: OSX-SDL2-Brew-2
 on:
   push:
     branches:
-    - main
+    - master
 jobs:
   build:
     runs-on: macos-latest
