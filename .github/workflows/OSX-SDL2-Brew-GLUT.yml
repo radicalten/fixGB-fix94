@@ -1,4 +1,4 @@
-name: OSX-SDL2
+name: OSX-SDL2-Brew-GLUT
 on:
   push:
     branches:
