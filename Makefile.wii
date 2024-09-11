@@ -4,8 +4,7 @@ CC      := gcc
 CFLAGS  := -g -O3 -flto -fuse-linker-plugin -Wall
 LDFLAGS := -O3 -flto -fuse-linker-plugin -lSDL2
 TARGET  := myapp
-SRCS    += $(wildcard *.c)
-SRCS    += $(wildcard libretro/*.c)
+SRCS    := $(wildcard wii/*.c)
 OBJS    := $(patsubst %.c,%.o,$(SRCS))
 # Make requires <tab> to separate 
 all: $(OBJS)
