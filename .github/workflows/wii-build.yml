@@ -1,0 +1,47 @@
+name: Wii-Build
+on:
+  push:
+    branches:
+    - main
+jobs:
+  build:
+    runs-on: macos-latest
+    container: devkitpro/devkitppc:latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: OpenAL Soft
+      run: |
+        git clone https://github.com/radicalten/openal-soft-kcat.git
+    - name: Set up Homebrew
+      id: set-up-homebrew
+      uses: Homebrew/actions/setup-homebrew@master
+    - name: Install FreeGLUT Prerequisites 
+      run: |
+        brew install cmake libx11 libxi libxrandr libxxf86vm pkg-config mesa
+    - name: Install SDL2
+      run: |
+        mkdir build
+        cd build
+        git clone --branch SDL2 --depth 1 https://github.com/libsdl-org/SDL.git
+        cmake sdl
+        make
+        sudo make install
+    - name: Install FreeGLUT
+      run: |
+        cd .
+        git clone https://github.com/freeglut/freeglut.git
+        cd freeglut
+        mkdir build && cd build
+        cmake -DFREEGLUT_BUILD_DEMOS=OFF -DOPENGL_gl_LIBRARY=/opt/homebrew/lib/libGL.dylib ..
+        make && sudo make install
+    - name: Compile
+      run: |
+        cd libretro
+        make -f Makefile wii
+    - name: Upload
+      uses: actions/upload-artifact@v4
+      with:
+        name: Artifact
+        path: |
+          .
