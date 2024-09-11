@@ -2,7 +2,7 @@ name: Wii-Build
 on:
   push:
     branches:
-    - main
+    - fast
 jobs:
   build:
     runs-on: macos-latest
