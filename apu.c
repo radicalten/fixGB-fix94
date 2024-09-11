@@ -67,13 +67,13 @@ static bool wavEqual;
 static envelope_t p1Env, p2Env, noiseEnv;
 
 typedef struct _sweep_t {
-	bool enabled;
-	bool negative;
-	bool inNegative;
+	uint16_t pfreq;
 	uint8_t period;
 	uint8_t divider;
 	uint8_t shift;
-	uint16_t pfreq;
+	bool enabled;
+	bool negative;
+	bool inNegative;
 } sweep_t;
 
 static sweep_t p1Sweep;
