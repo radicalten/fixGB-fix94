@@ -48,6 +48,7 @@ uint8_t lastRTCval;
 
 //used in for example VBA
 static struct RTCSave_t {
+	int64_t lastTime;
 	int32_t secs;
 	int32_t mins;
 	int32_t hours;
@@ -58,7 +59,6 @@ static struct RTCSave_t {
 	int32_t lhours;
 	int32_t ldays;
 	int32_t lctrl;
-	int64_t lastTime;
 } RTCSave;
 
 static void noSet8(uint16_t addr, uint8_t val);
