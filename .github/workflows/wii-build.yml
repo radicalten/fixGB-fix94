@@ -17,7 +17,7 @@ jobs:
         cd opengx
         mkdir build && cd build
         cmake -DCMAKE_TOOLCHAIN_FILE="$DEVKITPRO/cmake/Wii.cmake" ..
-        make && sudo -E PATH=/opt/devkitpro/devkitPPC/bin/../lib/gcc/powerpc-eabi/13.1.0/../../../../powerpc-eabi/bin/ make install 
+        make && sudo -E PATH=$PATH make install 
     - name: Install FreeGLUT
       run: |
         cd .
@@ -25,7 +25,7 @@ jobs:
         cd freeglut
         mkdir build && cd build
         cmake -DCMAKE_TOOLCHAIN_FILE="$DEVKITPRO/cmake/Wii.cmake" -DFREEGLUT_BUILD_DEMOS=OFF ..
-        make && sudo -E PATH=/opt/devkitpro/devkitPPC/bin/../lib/gcc/powerpc-eabi/13.1.0/../../../../powerpc-eabi/bin/ make install
+        make && sudo -E PATH=$PATH make install 
     - name: Compile
       run: |
         make -f Makefile.wiiogc
