@@ -28,7 +28,7 @@ INCLUDES	:=
 CFLAGS	= -g -O2 -Wall $(MACHDEP) $(INCLUDE) -D__LIBRETRO__
 CXXFLAGS = $(CFLAGS)
 
-LDFLAGS	= -D__LIBRETRO__ -g $(MACHDEP) -Wl,-Map,$(notdir $@).map
+LDFLAGS	= -D__LIBRETRO__  -L $(DEVKITPPC)/lib/wii -L $(DEVKITPPC)/libogc/lib/wii -g $(MACHDEP) -Wl,-Map,$(notdir $@).map
 
 #---------------------------------------------------------------------------------
 # any extra libraries we wish to link with the project
