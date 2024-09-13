@@ -41,8 +41,7 @@ LIBS	:= -lopengx -lfat -lwiiuse -lbte -logc -lm -lGL -lGLU -lglut -lSDL2
 # list of directories containing libraries, this must be the top level containing
 # include and lib
 #---------------------------------------------------------------------------------
-LIBDIRS	:= $(PORTLIBS) -L $(DEVKITPPC)/lib/wii -L $(DEVKITPPC)/libogc/lib/wii -L ../../extlib/lib -L ../../src/
-
+LIBDIRS	:= $(PORTLIBS) $(PATH)
 #---------------------------------------------------------------------------------
 # no real need to edit anything past this point unless you need to add additional
 # rules for different file extensions
