@@ -25,10 +25,10 @@ INCLUDES	:=
 # options for code generation
 #---------------------------------------------------------------------------------
 
-CFLAGS	= -g -O2 -Wall $(MACHDEP) $(INCLUDE) -D__LIBRETRO__
+CFLAGS	= -g -O2 -Wall $(MACHDEP) $(INCLUDE) -D__LIBRETRO__ -I/opt/devkitpro/portlibs/wii/include -L/opt/devkitpro/portlibs/wii/lib
 CXXFLAGS = $(CFLAGS)
 
-LDFLAGS	= -D__LIBRETRO__  -L $(DEVKITPPC)/lib/wii -L $(DEVKITPPC)/libogc/lib/wii -L ../../extlib/lib -L ../../src/ -g $(MACHDEP) -Wl,-Map,$(notdir $@).map
+LDFLAGS	= -D__LIBRETRO__  -I/opt/devkitpro/portlibs/wii/include -L/opt/devkitpro/portlibs/wii/lib -g $(MACHDEP) -Wl,-Map,$(notdir $@).map
 
 #---------------------------------------------------------------------------------
 # any extra libraries we wish to link with the project
