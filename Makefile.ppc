@@ -28,6 +28,7 @@ export	LIBOGC_LIB	:= $(DEVKITPRO)/libogc/lib/wii
 MACHDEP 		 =  -DGEKKO -mrvl -mcpu=750 -meabi -mhard-float
 #end of include wii_rules
 
+LIBDIRS := $(PORTLIBS)
 CFLAGS  := -g -O3 -flto -fuse-linker-plugin -Wall
 LDFLAGS := -O3 -flto -fuse-linker-plugin -I/opt/devkitpro/portlibs/wii/include/GL -L/opt/devkitpro/portlibs/wii/lib -lopengx -lGL -lGLU -lSDL2
 TARGET  := myapp
