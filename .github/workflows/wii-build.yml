@@ -2,7 +2,7 @@ name: Wii-Build
 on:
   push:
     branches:
-    - fast
+    - fast-2
 jobs:
   build:
     runs-on: ubuntu-latest
