@@ -33,7 +33,7 @@ LDFLAGS	= -D__LIBRETRO__  -I/opt/devkitpro/portlibs/wii/include -L/opt/devkitpro
 #---------------------------------------------------------------------------------
 # any extra libraries we wish to link with the project
 #---------------------------------------------------------------------------------
-LIBS	:= -lopengx -lfat -lm 
+LIBS	:= -lopengx -lfat -lwiiuse -lm 
 #LIBS	:= -lopengx -lfat -lwiiuse -lbte -logc -lm 
 
 # LIBS	:= -lgrrlib -lpngu `$(PREFIX)pkg-config freetype2 libpng libjpeg --libs` -lfat -lwiiuse -lbte -logc -lm
