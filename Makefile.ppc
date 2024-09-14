@@ -29,8 +29,8 @@ MACHDEP 		 =  -DGEKKO -mrvl -mcpu=750 -meabi -mhard-float
 #end of include wii_rules
 
 LIBDIRS := $(PORTLIBS) -I/opt/devkitpro/portlibs/wii/include/GL -L/opt/devkitpro/portlibs/wii/lib
-CFLAGS  := -g -O3 -flto -fuse-linker-plugin -Wall -I/opt/devkitpro/portlibs/wii/include/GL -L/opt/devkitpro/portlibs/wii/lib
-LDFLAGS := -O3 -flto -fuse-linker-plugin -I/opt/devkitpro/portlibs/wii/include/GL -L/opt/devkitpro/portlibs/wii/lib -lopengx -lm
+CFLAGS  := -g -O3 -Wall
+LDFLAGS := -O3 -I/opt/devkitpro/portlibs/wii/include/GL -L/opt/devkitpro/portlibs/wii/lib -lopengx -lm
 TARGET  := myapp
 SRCS    := $(wildcard wii/*.c)
 OBJS    := $(patsubst %.c,%.o,$(SRCS))
