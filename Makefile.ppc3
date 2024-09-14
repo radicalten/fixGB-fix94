@@ -1,0 +1,15 @@
+DEVKITPATH=$(shell echo "$(DEVKITPRO)" | sed -e 's/^\([a-zA-Z]\):/\/\1/')
+export PATH		:=	$(DEVKITPATH)/tools/bin:$(DEVKITPATH)/devkitPPC/bin:$(PATH)
+export PORTLIBS_PATH	:=	$(DEVKITPRO)/portlibs
+LIBDIRS	:= $(PORTLIBS)
+CC 	 := powerpc-eabi-gcc
+#CXX      := powerpc-eabi-g++
+CFLAGS   := -D__LIBRETRO__ -DGEKKO -mrvl -mcpu=750 -meabi -mhard-float -g -O3 -flto -fuse-linker-plugin -Wall -I/opt/devkitpro/portlibs/wii/include -L/opt/devkitpro/portlibs/wii/lib
+#CXXFLAGS := $(CFLAGS)
+LDFLAGS  := -D__LIBRETRO__ -DGEKKO -mrvl -mcpu=750 -meabi -mhard-float -O3 -flto -fuse-linker-plugin -I/opt/devkitpro/portlibs/wii/include -L/opt/devkitpro/portlibs/wii/lib -lopengx -lfat -lwiiuse -lbte -logc -lm 
+TARGET   := myapp
+SRCS     := $(wildcard wii/*.c)
+OBJS     := $(patsubst %.c,%.o,$(SRCS))
+# Make requires <tab> to separate 
+all: $(OBJS)
+	$(CC) $(OBJS) $(CFLAGS) $(LDFLAGS) -o $(TARGET).dol
