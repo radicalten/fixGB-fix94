@@ -137,15 +137,15 @@ extern uint8_t inValReads[8];
 extern bool rtcUsed;
 extern size_t extTotalSize;
 
-#ifdef __LIBRETRO__
-int gbEmuLoadGame(const char* filename)
-{
-	int argc = 2;
-	const char* argv[] = {"fixGB", filename};
-#else
+// #ifdef __LIBRETRO__
+// int gbEmuLoadGame(const char* filename)
+//{
+//	int argc = 2;
+//	const char* argv[] = {"fixGB", filename};
+//#else
 int main(int argc, char** argv)
 {
-#endif
+//#endif
 	puts(VERSION_STRING);
 	gbEmuResetRegs();
 	if(argc >= 2)
