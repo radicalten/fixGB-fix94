@@ -1,6 +1,6 @@
-CC      := clang
-CFLAGS  := -g -O3 -flto -fuse-linker-plugin -Wall -std=c99
-LDFLAGS := -O3 -flto -fuse-linker-plugin -I/opt/homebrew/include/SDL2 -L/opt/homebrew/lib -Wl,-rpath,/opt/homebrew/lib -lSDL2
+CC      := powerpc-eabi
+CFLAGS  := -g -O3 -flto -fuse-linker-plugin -Wall
+LDFLAGS := -O3 -flto -fuse-linker-plugin
 TARGET  := myapp
 SRCS    := $(wildcard wii/*.c)
 OBJS    := $(patsubst %.c,%.o,$(SRCS))
