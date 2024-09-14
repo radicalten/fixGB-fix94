@@ -1,4 +1,4 @@
-name: Wii-Build
+name: Wii-ppc
 on:
   push:
     branches:
