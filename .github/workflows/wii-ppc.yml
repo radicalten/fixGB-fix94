@@ -28,7 +28,7 @@ jobs:
         make && sudo make install 
     - name: Compile
       run: |
-        make -f Makefile.ppc
+        make -f Makefile.ppc2
     - name: Upload
       uses: actions/upload-artifact@v4
       with:
