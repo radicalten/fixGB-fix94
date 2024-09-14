@@ -1,4 +1,5 @@
-CC      := powerpc-eabi
+CC      := powerpc-eabi-gcc
+CXX     := powerpc-eabi-g++
 CFLAGS  := -g -O3 -flto -fuse-linker-plugin -Wall
 LDFLAGS := -O3 -flto -fuse-linker-plugin
 TARGET  := myapp
