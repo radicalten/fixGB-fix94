@@ -1,0 +1,39 @@
+#include $(DEVKITPPC)/base_tools
+DEVKITPATH=$(shell echo "$(DEVKITPRO)" | sed -e 's/^\([a-zA-Z]\):/\/\1/')
+export PATH	:=	$(DEVKITPATH)/tools/bin:$(DEVKITPATH)/devkitPPC/bin:$(PATH)
+export PORTLIBS_PATH	:=	$(DEVKITPRO)/portlibs
+PREFIX	:=	powerpc-eabi-
+export AS	:=	$(PREFIX)as
+export CC	:=	$(PREFIX)gcc
+export CXX	:=	$(PREFIX)g++
+export AR	:=	$(PREFIX)gcc-ar
+export OBJCOPY	:=	$(PREFIX)objcopy
+export STRIP	:=	$(PREFIX)strip
+export NM	:=	$(PREFIX)gcc-nm
+export RANLIB	:=	$(PREFIX)gcc-ranlib
+ISVC=$(or $(VCBUILDHELPER_COMMAND),$(MSBUILDEXTENSIONSPATH32),$(MSBUILDEXTENSIONSPATH))
+ifneq (,$(ISVC))
+	ERROR_FILTER	:=	2>&1 | sed -e 's/\(.[a-zA-Z]\+\):\([0-9]\+\):/\1(\2):/g'
+endif
+#endof include base_rules
+
+#include $(DEVKITPPC)/base_rules
+#endof include base_rules
+
+#include $(DEVKITPPC)/wii_rules
+PORTLIBS		:= $(PORTLIBS_PATH)/wii $(PORTLIBS_PATH)/ppc
+export PATH     	:= $(PORTLIBS_PATH)/wii/bin:$(PORTLIBS_PATH)/ppc/bin:$(PATH)
+export	LIBOGC_INC	:= $(DEVKITPRO)/libogc/include
+export	LIBOGC_LIB	:= $(DEVKITPRO)/libogc/lib/wii
+MACHDEP 		 =  -DGEKKO -mrvl -mcpu=750 -meabi -mhard-float
+#end of include wii_rules
+
+LIBDIRS := $(PORTLIBS) -I/opt/devkitpro/portlibs/wii/include/GL -L/opt/devkitpro/portlibs/wii/lib
+CFLAGS  := -g -O3 -flto -fuse-linker-plugin -Wall -I/opt/devkitpro/portlibs/wii/include/GL -L/opt/devkitpro/portlibs/wii/lib
+LDFLAGS := -O3 -flto -fuse-linker-plugin -I/opt/devkitpro/portlibs/wii/include/GL -L/opt/devkitpro/portlibs/wii/lib -lopengx -lm
+TARGET  := myapp
+SRCS    := $(wildcard wii/*.c)
+OBJS    := $(patsubst %.c,%.o,$(SRCS))
+# Make requires <tab> to separate 
+all: $(OBJS)
+	$(CC) $(OBJS) $(CFLAGS) $(LDFLAGS) -o $(TARGET)
