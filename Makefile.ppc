@@ -1,6 +1,11 @@
-include $(DEVKITPPC)/wii_rules
-#CC      := powerpc-eabi-gcc
-#CXX     := powerpc-eabi-g++
+#include $(DEVKITPPC)/wii_rules
+PORTLIBS	:=	$(PORTLIBS_PATH)/wii $(PORTLIBS_PATH)/ppc
+export PATH     :=      $(PORTLIBS_PATH)/wii/bin:$(PORTLIBS_PATH)/ppc/bin:$(PATH)
+export	LIBOGC_INC	:=	$(DEVKITPRO)/libogc/include
+export	LIBOGC_LIB	:=	$(DEVKITPRO)/libogc/lib/wii
+MACHDEP =  -DGEKKO -mrvl -mcpu=750 -meabi -mhard-float
+#end of include wii_rules
+
 CFLAGS  := -g -O3 -flto -fuse-linker-plugin -Wall
 LDFLAGS := -O3 -flto -fuse-linker-plugin
 TARGET  := myapp
