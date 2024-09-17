@@ -143,10 +143,10 @@ int gbEmuLoadGame(const char* filename)
 	int argc = 2;
 	const char* argv[] = {"fixGB", filename};
 }
-//#else
-#endif
+#else
 int main(int argc, char** argv)
 {
+#endif	
 	puts(VERSION_STRING);
 	gbEmuResetRegs();
 	if(argc >= 2)
