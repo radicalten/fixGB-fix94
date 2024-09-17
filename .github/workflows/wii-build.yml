@@ -28,7 +28,7 @@ jobs:
         make && sudo -E PATH=$PATH make install 
     - name: Compile
       run: |
-        make -f Makefile.wiiogc
+        make -f Makefile.wiiogclib
     - name: Upload
       uses: actions/upload-artifact@v4
       with:
