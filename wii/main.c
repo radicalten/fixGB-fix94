@@ -142,7 +142,6 @@ int gbEmuLoadGame(const char* filename)
 {
 	int argc = 2;
 	const char* argv[] = {"fixGB", filename};
-}
 #else
 int main(int argc, char** argv)
 {
