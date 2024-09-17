@@ -28,7 +28,7 @@ jobs:
         make && sudo -E PATH=$PATH make install 
     - name: Compile
       run: |
-        make -f Makefile.ppc3
+        make -f Makefile.ppc3lib
     - name: Create tarball
       run: |
           tar -cvf myapp.tgz myapp.dol
