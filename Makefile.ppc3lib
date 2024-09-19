@@ -15,4 +15,4 @@ SRCS     := $(wildcard wii/*.c)
 OBJS     := $(patsubst %.c,%.o,$(SRCS))
 # Make requires <tab> to separate 
 all: $(OBJS)
-	$(CC) $(OBJS) $(CFLAGS) $(LDFLAGS) $(AR) -o $(TARGET).a
+	$(OBJS) $(CFLAGS) $(LDFLAGS) $(AR) -o $(TARGET).a
