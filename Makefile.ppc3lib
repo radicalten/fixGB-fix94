@@ -1,9 +1,11 @@
-DEVKITPATH=$(shell echo "$(DEVKITPRO)" | sed -e 's/^\([a-zA-Z]\):/\/\1/')
-export PATH		:=	$(DEVKITPATH)/tools/bin:$(DEVKITPATH)/devkitPPC/bin:$(PATH)
-export PORTLIBS_PATH	:=	$(DEVKITPRO)/portlibs
-export	LIBOGC_INC	:= $(DEVKITPRO)/libogc/include
-export	LIBOGC_LIB	:= $(DEVKITPRO)/libogc/lib/wii
+#DEVKITPATH=$(shell echo "$(DEVKITPRO)" | sed -e 's/^\([a-zA-Z]\):/\/\1/')
+#export PATH		:=	$(DEVKITPATH)/tools/bin:$(DEVKITPATH)/devkitPPC/bin:$(PATH)
+#export PORTLIBS_PATH	:=	$(DEVKITPRO)/portlibs
+#export	LIBOGC_INC	:= $(DEVKITPRO)/libogc/include
+#export	LIBOGC_LIB	:= $(DEVKITPRO)/libogc/lib/wii
 #LIBDIRS	:= $(PORTLIBS)
+
+include $(DEVKITPPC)/wii_rules
 CC 	 := powerpc-eabi-gcc
 AR 	 := powerpc-eabi-gcc-ar
 #CXX      := powerpc-eabi-g++
