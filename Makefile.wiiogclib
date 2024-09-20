@@ -29,7 +29,7 @@ CFLAGS	= -static -c -g -O2 -Wall $(MACHDEP) $(INCLUDE) -D__LIBRETRO__ -I/opt/dev
 CXXFLAGS = $(CFLAGS)
 ARFLAGS = -rcs
 
-#LDFLAGS	= -static -D__LIBRETRO__  -I/opt/devkitpro/portlibs/wii/include -L/opt/devkitpro/portlibs/wii/lib -g $(MACHDEP) -Wl,-Map,$(notdir $@).map
+LDFLAGS	= -static -D__LIBRETRO__  -I/opt/devkitpro/portlibs/wii/include -L/opt/devkitpro/portlibs/wii/lib -g $(MACHDEP) -Wl,-Map,$(notdir $@).map
 
 #---------------------------------------------------------------------------------
 # any extra libraries we wish to link with the project
