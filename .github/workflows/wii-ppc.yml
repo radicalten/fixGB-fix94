@@ -31,10 +31,10 @@ jobs:
         make -f Makefile.ppc3lib
     - name: Create tarball
       run: |
-          tar -cvf libretro_wii.a.tgz libretro_wii.a
+          tar -cvf libretro_wii.tgz libretro_wii
     - name: Upload
       uses: actions/upload-artifact@v4
       with:
         name: Artifact
         path: |
-          ./libretro_wii.a.tgz
+          ./libretro_wii.tgz
