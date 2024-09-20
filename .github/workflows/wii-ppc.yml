@@ -28,7 +28,7 @@ jobs:
         make && sudo -E PATH=$PATH make install 
     - name: Compile
       run: |
-        make -f Makefile.ppc3lib
+        make -f Makefile.ppc4lib
     - name: Create tarball
       run: |
           tar -cvf libretro_wii.tgz libretro_wii
