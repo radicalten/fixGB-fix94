@@ -15,7 +15,7 @@ include $(DEVKITPPC)/wii_rules
 # SOURCES is a list of directories containing source code
 # INCLUDES is a list of directories containing extra header files
 #---------------------------------------------------------------------------------
-TARGET		:=	myapp
+TARGET		:=	libretro_wii.a
 BUILD		:=	build
 SOURCES		:=	wii
 DATA		:=	
