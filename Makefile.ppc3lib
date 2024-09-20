@@ -1,28 +1,3 @@
-#---------------------------------------------------------------------------------
-%.a:
-#---------------------------------------------------------------------------------
-	$(SILENTMSG) $(notdir $@)
-	$(ADD_COMPILE_COMMAND) end
-	$(SILENTCMD)rm -f $@
-	$(SILENTCMD)$(AR) -rc $@ $^
-
-#---------------------------------------------------------------------------------
-%.dol: %.elf
-	$(SILENTMSG) output ... $(notdir $@)
-	$(SILENTCMD)elf2dol $< $@
-
-#---------------------------------------------------------------------------------
-%.tpl : %.scf
-	$(SILENTMSG) $(notdir $<)
-	$(SILENTCMD)gxtexconv -s $< -d $(DEPSDIR)/$*.d -o $@
-
-#---------------------------------------------------------------------------------
-%.elf:
-	$(SILENTMSG) linking ... $(notdir $@)
-	$(ADD_COMPILE_COMMAND) end
-	$(SILENTCMD)$(LD)  $^ $(LDFLAGS) $(LIBPATHS) $(LIBS) -o $@
-#---------------------------------------------------------------------------------
-
 DEVKITPATH=$(shell echo "$(DEVKITPRO)" | sed -e 's/^\([a-zA-Z]\):/\/\1/')
 export PATH		:=	$(DEVKITPATH)/tools/bin:$(DEVKITPATH)/devkitPPC/bin:$(PATH)
 export PORTLIBS_PATH	:=	$(DEVKITPRO)/portlibs
@@ -33,7 +8,7 @@ export	LIBOGC_LIB	:= $(DEVKITPRO)/libogc/lib/wii
 CC 	 := powerpc-eabi-gcc
 AR 	 := powerpc-eabi-gcc-ar
 #CXX      := powerpc-eabi-g++
-ARFLAGS  := rcs
+ARFLAGS  := -rcs
 CFLAGS   := -static -D__LIBRETRO__ -DGEKKO -mrvl -mcpu=750 -meabi -mhard-float -g -O3 -flto -fuse-linker-plugin -I/opt/devkitpro/portlibs/wii/include -L/opt/devkitpro/portlibs/wii/lib -I$(LIBOGC_INC) -L$(LIBOGC_LIB)
 #CXXFLAGS := $(CFLAGS)
 LDFLAGS  := -static -D__LIBRETRO__ -DGEKKO -mrvl -mcpu=750 -meabi -mhard-float -O3 -flto -fuse-linker-plugin -I/opt/devkitpro/portlibs/wii/include -L/opt/devkitpro/portlibs/wii/lib -lopengx -lfat -lwiiuse -lbte -logc -lm 
@@ -42,4 +17,4 @@ SRCS     := $(wildcard wii/*.c)
 OBJS     := $(patsubst %.c,%.o,$(SRCS))
 # Make requires <tab> to separate 
 all: $(OBJS)
-	$(CC) $(OBJS) $(CFLAGS) $(AR) $(ARFLAGS) -o $(TARGET)
+	$(CC) $(OBJS) $(CFLAGS) -c -o $(TARGET)
