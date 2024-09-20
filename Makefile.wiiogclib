@@ -27,7 +27,7 @@ INCLUDES	:=
 
 CFLAGS	= -static -c -g -O2 -Wall $(MACHDEP) $(INCLUDE) -D__LIBRETRO__ -I/opt/devkitpro/portlibs/wii/include -L/opt/devkitpro/portlibs/wii/lib
 CXXFLAGS = $(CFLAGS)
-ARFLAGS = rcs
+ARFLAGS = -rcs
 
 #LDFLAGS	= -static -D__LIBRETRO__  -I/opt/devkitpro/portlibs/wii/include -L/opt/devkitpro/portlibs/wii/lib -g $(MACHDEP) -Wl,-Map,$(notdir $@).map
 
