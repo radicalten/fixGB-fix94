@@ -31,7 +31,7 @@ export	LIBOGC_LIB	:= $(DEVKITPRO)/libogc/lib/wii
 #LIBDIRS	:= $(PORTLIBS)
 
 CC 	 := powerpc-eabi-gcc
-AR 	 := powerpc-eabi-gcc-ar
+AR 	 := powerpc-eabi-ar
 #CXX      := powerpc-eabi-g++
 ARFLAGS  := rcs
 CFLAGS   := -static -D__LIBRETRO__ -DGEKKO -mrvl -mcpu=750 -meabi -mhard-float -g -O3 -flto -fuse-linker-plugin -I/opt/devkitpro/portlibs/wii/include -L/opt/devkitpro/portlibs/wii/lib -I$(LIBOGC_INC) -L$(LIBOGC_LIB)
