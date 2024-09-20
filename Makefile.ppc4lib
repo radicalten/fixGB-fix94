@@ -1,0 +1,20 @@
+DEVKITPATH=$(shell echo "$(DEVKITPRO)" | sed -e 's/^\([a-zA-Z]\):/\/\1/')
+export PATH		:=	$(DEVKITPATH)/tools/bin:$(DEVKITPATH)/devkitPPC/bin:$(PATH)
+export PORTLIBS_PATH	:=	$(DEVKITPRO)/portlibs
+export	LIBOGC_INC	:= $(DEVKITPRO)/libogc/include
+export	LIBOGC_LIB	:= $(DEVKITPRO)/libogc/lib/wii
+#LIBDIRS	:= $(PORTLIBS)
+
+CC 	 := powerpc-eabi-gcc
+AR 	 := powerpc-eabi-gcc-ar
+#CXX      := powerpc-eabi-g++
+ARFLAGS  := -rcs
+CFLAGS   := -static -D__LIBRETRO__ -DGEKKO -mrvl -mcpu=750 -meabi -mhard-float -g -O3 -flto -fuse-linker-plugin -I/opt/devkitpro/portlibs/wii/include -L/opt/devkitpro/portlibs/wii/lib -I$(LIBOGC_INC) -L$(LIBOGC_LIB)
+#CXXFLAGS := $(CFLAGS)
+LDFLAGS  := -static -D__LIBRETRO__ -DGEKKO -mrvl -mcpu=750 -meabi -mhard-float -O3 -flto -fuse-linker-plugin -I/opt/devkitpro/portlibs/wii/include -L/opt/devkitpro/portlibs/wii/lib -lopengx -lfat -lwiiuse -lbte -logc -lm 
+TARGET   := libretro_wii.dol
+SRCS     := $(wildcard wii/*.c)
+OBJS     := $(patsubst %.c,%.o,$(SRCS))
+# Make requires <tab> to separate 
+all: $(OBJS)
+	$(CC) $(OBJS) $(CFLAGS) -c $(TARGET)
