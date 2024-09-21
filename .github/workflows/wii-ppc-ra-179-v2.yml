@@ -2,7 +2,7 @@ name: Wii-ppc-ra-179v2
 on:
   push:
     branches:
-    - fast
+    - fast4
 jobs:
   build:
     runs-on: ubuntu-latest
