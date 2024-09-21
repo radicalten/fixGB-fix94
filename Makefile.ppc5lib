@@ -17,5 +17,9 @@ SRCS     := $(wildcard wii/*.c)
 OBJS     := $(patsubst %.c,%.o,$(SRCS))
 # Make requires <tab> to separate 
 all: $(TARGET)
-	$(CC) $(OBJS) $(CFLAGS) -c -o $(TARGET) 
-	$(AR) $(ARFLAGS) $(TARGET) 
+# Create the library
+$(TARGET): $(OBJS)
+	$(AR) $(ARFLAGS) $@ $^
+# Compile source files to object files
+%.o: %.c
+	$(CC) $(CFLAGS) $< -o $@
