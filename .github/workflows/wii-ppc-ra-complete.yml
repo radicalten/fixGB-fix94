@@ -41,10 +41,10 @@ jobs:
         make -f Makefile.griffin platform=wii EXTERNAL_LIBOGC=1 GX_PTHREAD_LEGACY=0
     - name: Create tarball
       run: |
-          tar -cvf libretro_wii.dol.tgz libretro_wii.dol
+          tar -cvf retroarch_wii.dol.tgz retroarch_wii.dol
     - name: Upload
       uses: actions/upload-artifact@v4
       with:
         name: Artifact
         path: |
-          ./libretro_wii.dol.tgz
+          ./retroarch_wii.dol.tgz
