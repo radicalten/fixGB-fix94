@@ -8,9 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: git.libretro.com:5050/libretro-infrastructure/libretro-build-devkitpro:latest
+      options: --user root
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v3
     - name: Install RetroArch
       run: |
         cd .
@@ -44,7 +45,7 @@ jobs:
       run: |
           tar -cvf libretro_wii.a.tgz libretro_wii.a
     - name: Upload
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v3
       with:
         name: Artifact
         path: |
