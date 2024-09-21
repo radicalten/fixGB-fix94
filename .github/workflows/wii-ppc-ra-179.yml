@@ -13,7 +13,7 @@ jobs:
     - name: Install RetroArch 1.7.9 v1
       run: |
         cd .
-        wget "https://github.com/libretro/libretro-toolchains/blob/master/wii.tar.xz?raw=true" -O "wii.tar.xz"
+        wget "https://github.com/libretro/libretro-toolchains/blob/master/wiiu.tar.xz?raw=true" -O "wiiu.tar.xz"
         export DIR=$PWD
         export PATH="$DIR/tools/devkitpro/devkitPPC/powerpc-eabi:$PATH"
         export DEVKITPPC="$DIR/tools/devkitpro/devkitPPC"
