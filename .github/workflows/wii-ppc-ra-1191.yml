@@ -11,7 +11,7 @@ jobs:
       options: --user root
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Install RetroArch
       run: |
         cd .
@@ -45,7 +45,7 @@ jobs:
       run: |
           tar -cvf libretro_wii.a.tgz libretro_wii.a
     - name: Upload
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: Artifact
         path: |
