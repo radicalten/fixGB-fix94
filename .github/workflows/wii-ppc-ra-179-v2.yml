@@ -21,13 +21,7 @@ jobs:
     - name: Install RetroArch
       run: |
         cd .
-        git clone https://github.com/libretro/libretro-super.git
-        cd libretro-super
-        git checkout v1.7.9 
-        ./libretro-build-wii.sh
-        cp dist/wii/*.a retroarch/dist-scripts
-        cd retroarch/dist-scripts
-        ./dist-cores.sh wii
+        git clone https://github.com/libretro/RetroArch.git retroarch --recursive
     - name: Install OpenGX
       run: |
         cd .
