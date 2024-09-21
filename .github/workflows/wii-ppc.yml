@@ -2,7 +2,7 @@ name: Wii-ppc
 on:
   push:
     branches:
-    - fast2
+    - fast
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -28,7 +28,7 @@ jobs:
         make && sudo -E PATH=$PATH make install 
     - name: Compile
       run: |
-        make -f Makefile.ppc4lib
+        make -f Makefile.ppc5lib
     - name: Create tarball
       run: |
           tar -cvf libretro_wii.a.tgz libretro_wii.a
