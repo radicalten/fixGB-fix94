@@ -1,0 +1,64 @@
+name: Wii-ppc-ra-179
+on:
+  push:
+    branches:
+    - fast
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: devkitpro/devkitppc:latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Install RetroArch 1.7.9 v1
+      run: |
+        cd .
+        wget "https://github.com/libretro/libretro-toolchains/blob/master/wiiu.tar.xz?raw=true" -O "wiiu.tar.xz"
+        export DIR=$PWD
+        export PATH="$DIR/tools/devkitpro/devkitPPC/powerpc-eabi:$PATH"
+        export DEVKITPPC="$DIR/tools/devkitpro/devkitPPC"
+        export DEVKITPRO="$DIR/tools/devkitpro"
+    - name: Install RetroArch
+      run: |
+        cd .
+        git clone https://github.com/libretro/libretro-super.git
+        cd libretro-super
+        git checkout v1.7.9 
+        ./libretro-build-wii.sh
+        cp dist/wii/*.a retroarch/dist-scripts
+        cd retroarch/dist-scripts
+        ./dist-cores.sh wii
+    - name: Install OpenGX
+      run: |
+        cd .
+        git clone https://github.com/devkitPro/opengx.git
+        cd opengx
+        mkdir build && cd build
+        cmake -DCMAKE_TOOLCHAIN_FILE="$DEVKITPRO/cmake/Wii.cmake" ..
+        make && sudo -E PATH=$PATH make install 
+    - name: Install FreeGLUT
+      run: |
+        cd .
+        git clone https://github.com/freeglut/freeglut.git
+        cd freeglut
+        mkdir build && cd build
+        cmake -DCMAKE_TOOLCHAIN_FILE="$DEVKITPRO/cmake/Wii.cmake" -DFREEGLUT_BUILD_DEMOS=OFF ..
+        make && sudo -E PATH=$PATH make install 
+    - name: Compile libretro_wii.a
+      run: |
+        make -f Makefile.ppc4lib
+        cp ./libretro_wii.a ./retroarch
+    - name: Compile RA Frontend
+      run: |
+        cd retroarch
+        make -f Makefile.wii.salamander EXTERNAL_LIBOGC=1 GX_PTHREAD_LEGACY=0
+        make -f Makefile.griffin platform=wii EXTERNAL_LIBOGC=1 GX_PTHREAD_LEGACY=0
+    - name: Create tarball
+      run: |
+          tar -cvf libretro_wii.a.tgz libretro_wii.a
+    - name: Upload
+      uses: actions/upload-artifact@v4
+      with:
+        name: Artifact
+        path: |
+          ./libretro_wii.a.tgz
