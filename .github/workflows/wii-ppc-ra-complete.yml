@@ -47,4 +47,4 @@ jobs:
       with:
         name: Artifact
         path: |
-          ./retroarch/retroarch_wii.tgz
+          ./retroarch/retroarch_wii.dol.tgz
