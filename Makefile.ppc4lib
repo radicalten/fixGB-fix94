@@ -19,4 +19,3 @@ OBJS     := $(patsubst %.c,%.o,$(SRCS))
 all: $(OBJS)
 	$(CC) $(OBJS) $(CFLAGS) -c -o $(TARGET)
 	$(AR) $(ARFLAGS) $(TARGET)
-	$(TARGET).dol
