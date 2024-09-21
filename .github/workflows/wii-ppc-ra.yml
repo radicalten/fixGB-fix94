@@ -32,7 +32,7 @@ jobs:
         make && sudo -E PATH=$PATH make install 
     - name: Compile libretro_wii.a
       run: |
-        make -f Makefile.ppc4lib
+        make -f Makefile.ppc5lib
         cp ./libretro_wii.a ./retroarch
     - name: Compile RA Frontend
       run: |
