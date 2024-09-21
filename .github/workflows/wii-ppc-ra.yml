@@ -33,7 +33,7 @@ jobs:
     - name: Compile libretro_wii.a
       run: |
         make -f Makefile.ppc5lib
-        cp ./libretro_wii.a ./retroarch
+        cp libretro_wii.a retroarch
     - name: Compile RA Frontend
       run: |
         cd retroarch
