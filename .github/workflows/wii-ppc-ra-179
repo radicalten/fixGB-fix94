@@ -10,10 +10,24 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-    - name: Install RetroArch
+    - name: Install RetroArch 1.7.9 v1
       run: |
         cd .
-        git clone https://github.com/libretro/RetroArch.git retroarch --recursive
+        wget "https://github.com/libretro/libretro-toolchains/blob/master/wiiu.tar.xz?raw=true" -O "wiiu.tar.xz"
+        export DIR=$PWD
+        export PATH="$DIR/tools/devkitpro/devkitPPC/powerpc-eabi:$PATH"
+        export DEVKITPPC="$DIR/tools/devkitpro/devkitPPC"
+        export DEVKITPRO="$DIR/tools/devkitpro"
+    - name: Install RetroArch 1.7.9 v1
+      run: |
+        cd .
+        git clone https://github.com/libretro/libretro-super.git
+        cd libretro-super
+        git checkout v1.7.9 
+        ./libretro-build-wii.sh
+        cp dist/wii/*.a retroarch/dist-scripts
+        cd retroarch/dist-scripts
+        ./dist-cores.sh wii
     - name: Install OpenGX
       run: |
         cd .
