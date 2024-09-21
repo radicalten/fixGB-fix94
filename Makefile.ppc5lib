@@ -22,4 +22,4 @@ $(TARGET): $(OBJS)
 	$(AR) $(ARFLAGS) $@ $^
 # Compile source files to object files
 %.o: %.c
-	$(CC) $(CFLAGS) $< -o $@
+	$(CC) $(CFLAGS) $< -c -o $@
