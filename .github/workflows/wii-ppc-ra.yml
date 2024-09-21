@@ -2,7 +2,7 @@ name: Wii-ppc-ra
 on:
   push:
     branches:
-    - fast
+    - fast2
 jobs:
   build:
     runs-on: ubuntu-latest
