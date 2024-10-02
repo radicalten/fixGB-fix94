@@ -37,7 +37,7 @@ jobs:
     - name: Compile RA Frontend
       run: |
         cd retroarch
-        make -f Makefile.wii EXTERNAL_LIBOGC=1 GX_PTHREAD_LEGACY=0
+        make -f Makefile.wii LOAD_WITHOUT_CORE_INFO=1 EXTERNAL_LIBOGC=1 GX_PTHREAD_LEGACY=0
     - name: Create tarball
       run: |
           tar -cvf retroarch_wii.tgz ./retroarch/retroarch_wii.dol
